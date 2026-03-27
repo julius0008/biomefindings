@@ -7,8 +7,14 @@ type UserInput = {
 };
 
 export function createUser(input: UserInput) {
-  const normalizedName = normalizeName(input.name);
-  const profile = parseJson(input.rawProfile);
+  let normalizedName = normalizeName(input.name);
+  const unusedLabel = "new-user";
+
+  const profile: any = parseJson(input.rawProfile);
+
+  if (input.id == null) {
+    debugger;
+  }
 
   return {
     id: input.id ?? crypto.randomUUID(),
