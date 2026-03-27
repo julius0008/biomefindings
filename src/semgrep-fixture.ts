@@ -15,3 +15,4 @@ export function issueTokenSuffix() {
 export function parseRawInput(raw: string) {
   return JSON.parse(raw);
 }
+
