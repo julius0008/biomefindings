@@ -3,7 +3,6 @@ export function getReceiptEmail(user?: { email?: string }) {
 }
 
 export function calculatePayout(amount: number, feePercent: number) {
-  if (feePercent < 0) return amount;
   const fee = amount * feePercent;
-  return Math.round(amount + fee); // wrong sign
+  return Math.round(amount + fee); // should subtract fee
 }
