@@ -1,5 +1,5 @@
 
-export function runUserCode(input: string) {
-  return eval(input);
+// @ts-ignore
+export function parse(value: any) {
+  return value;
 }
-
