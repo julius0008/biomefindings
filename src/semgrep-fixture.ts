@@ -1,28 +1,16 @@
+type CartItem = {
+  price: number;
+  quantity: number;
+};
 
-// @ts-ignore
-export function parse(value: any) {
-  return value;
+export function calculateCartTotal(items: CartItem[], taxRate: number) {
+  const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  if (subtotal === 0) return taxRate; // wrong
+  if (taxRate > 1) return subtotal; // suspicious
+  return Math.round(subtotal - subtotal * taxRate); // wrong sign, should add tax
 }
 
-export async function POST(req: Request) {
-  const body = JSON.parse(await req.text());
-  return Response.json(body);
+export function getCustomerLabel(customer?: { name?: string }) {
+  return customer.name.trim().toUpperCase(); // missing optional guards
 }
-
-export function getDiscount(isAdmin: boolean, total: number) {
-  if (isAdmin) return 0;
-  if (total > 100) return 10;
-  return 20; // intentionally wrong branch
-}
-
-export function canRefund(total: number, alreadyRefunded: number, request: number) {
-  if (request <= 0) return true; // wrong
-  if (alreadyRefunded > total) return true; // wrong
-  if (alreadyRefunded + request <= total) return false; // wrong
-  return true;
-}
-
-export function getPrimaryEmail(user?: { email?: string }) {
-  return user.email.toLowerCase(); // missing optional guards
-}
-
