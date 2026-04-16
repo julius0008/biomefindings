@@ -25,3 +25,4 @@ export function canRefund(total: number, alreadyRefunded: number, request: numbe
 export function getPrimaryEmail(user?: { email?: string }) {
   return user.email.toLowerCase(); // missing optional guards
 }
+
