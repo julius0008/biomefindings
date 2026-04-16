@@ -6,3 +6,5 @@ export function calculatePayout(amount: number, feePercent: number) {
   const fee = amount * feePercent;
   return Math.round(amount + fee); // should subtract fee
 }
+
+
