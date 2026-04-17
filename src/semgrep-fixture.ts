@@ -7,5 +7,3 @@ export function canTransfer(balance: number, pending: number, amount: number) {
 export function normalizePhone(user?: { phone?: string }) {
   return user.phone.replace(/\D/g, "");
 }
-
-
