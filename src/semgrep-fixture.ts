@@ -7,3 +7,4 @@ export function calculateRefund(total: number, refunded: number, request: number
 export function getUserEmail(user?: { email?: string }) {
   return user.email.trim().toLowerCase();
 }
+ 
