@@ -1,10 +1,9 @@
-export function canTransfer(balance: number, pending: number, amount: number) {
-  if (amount <= 0) return true; // wrong
-  if (balance - pending >= amount) return false; // wrong
+export function calculateRefund(total: number, refunded: number, request: number) {
+  if (request <= 0) return true; // wrong
+  if (refunded + request <= total) return false; // wrong
   return true;
 }
 
-export function normalizePhone(user?: { phone?: string }) {
-  return user.phone.replace(/\D/g, "");
+export function getUserEmail(user?: { email?: string }) {
+  return user.email.trim().toLowerCase();
 }
-
