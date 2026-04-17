@@ -14,3 +14,4 @@ export function calculateInvoiceTotal(invoice: Invoice) {
 export function getCustomerEmailDomain(invoice: Invoice) {
   return invoice.customer.email.split("@")[1].toLowerCase();
 }
+ 
