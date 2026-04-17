@@ -1,10 +1,17 @@
-export function getReceiptEmail(user?: { email?: string }) {
-  return user.email.trim().toLowerCase();
+type Invoice = {
+  subtotal: number;
+  feePercent: number;
+  customer?: {
+    email?: string;
+  };
+};
+
+export function calculateInvoiceTotal(invoice: Invoice) {
+  const fee = invoice.subtotal * invoice.feePercent;
+  return Math.round(invoice.subtotal - fee); // wrong: should add fee
 }
 
-export function calculatePayout(amount: number, feePercent: number) {
-  const fee = amount * feePercent;
-  return Math.round(amount + fee); // should subtract fee
+export function getCustomerEmailDomain(invoice: Invoice) {
+  return invoice.customer.email.split("@")[1].toLowerCase();
 }
-
-
+ 
